@@ -1,0 +1,272 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pins_list.css' %}">
+    <script src="https://kit.fontawesome.com/72c0c071db.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style media="screen">
+
+    </style>
+</head>
+<body>
+    <!-- Common Nav -->
+    <div class="nav">
+        <span class="nav-logo">
+          <a href="{% url 'pins:list' %}">
+            <i class="fab fa-codiepie nav-logo-icon"></i>
+            pinbook
+          </a>
+        </span>
+        <div class="nav-bar-links">
+          <i class="fas nav-fas fa-plus nav-fas-fa-plus"></i>
+          <a href="./"><i class="fas nav-fas fa-home nav-fas-fa-home"></i></a>
+        <!-- <i class="fas nav-fas fa-bell nav-fas-fa-bell"></i> -->
+        </div>
+        <div class="nav-account-link">
+                        <form class="logout-form" action="{% url 'accounts:logout' %}" method="POST">
+                            {% csrf_token %}
+                          <button type="submit" class="logout-button">LOGOUT</button>
+                        </form>
+        </div>
+    </div>
+
+    <!-- HOMEPAGE USER PROFILE -->
+    {% if profileExists > 0 %}
+    {% for profile in profileData %}
+    {% if profile.username == loggedInUser %}
+
+    <div class="homepage-user-profile">
+        <div class="homepage-user-profile-pic">
+            <img src="{{profile.profilePic.url}}" alt="profile-pic" class="homepage-user-profile-img">
+        </div>
+        <div class="homepage-user-profile-username"><a href="{% url "pins:profile" %}">@{{profile.username}}</a></div>
+        <div class="homepage-user-profile-introtext">{{profile.bio}}</div>
+        <div class="homepage-user-profile-location"><i class="fas fa-map-marker-alt homepage-user-profile_fa-map-marker-alt"></i>{{profile.location}}</div>
+        <div class="visitaccount-or-logout">
+          <form class="logout-form" action="{% url 'accounts:logout' %}" method="POST">
+              {% csrf_token %}
+            <button type="submit" class="logout-button"><i class="fas fa-sign-out-alt visitaccount-or-logout-logout"></i></button>
+          </form>
+
+            <a href="{% url 'pins:profile' %}"><img src="{{profile.profilePic.url}}" alt="visit-account" class="visitaccount-or-logout-visitaccount"></a>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <div class="homepage-user-profile">
+        <div class="homepage-user-profile-pic">
+            <img src="{% static 'no-profile-autoimage.png' %}" alt="profile-pic" class="homepage-user-profile-img">
+        </div>
+        <div class="homepage-user-profile-username"><a href="{% url "pins:profile" %}">@{{loggedInUser.username}}</a></div>
+        <div class="homepage-user-profile-introtext">empty bio</div>
+        <div class="homepage-user-profile-location"><i class="fas fa-map-marker-alt homepage-user-profile_fa-map-marker-alt"></i>empty location</div>
+        <div class="visitaccount-or-logout">
+          <form class="logout-form" action="{% url 'accounts:logout' %}" method="POST">
+              {% csrf_token %}
+            <button type="submit" class="logout-button"><i class="fas fa-sign-out-alt visitaccount-or-logout-logout"></i></button>
+          </form>
+
+            <a href="{% url 'pins:profile' %}"><img src="{% static 'no-profile-autoimage.png' %}" alt="visit-account" class="visitaccount-or-logout-visitaccount"></a>
+        </div>
+    </div>
+    {% endif %}
+    <!-- END OF HOMEPAGE USERPROFILE -->
+
+
+
+    <!-- ALL POSTS-->
+    {% for pin in postedpin %}
+    <div class="post" style="z-index:-1;">
+        <div class="profile-img">
+            {% for profile in profileData %}
+                {% if profile.username == pin.author %}
+                    <img class="post-profile-pic" src="{{profile.profilePic.url}}" alt="profile-pic">
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="post-details">
+            <p class="username">@{{pin.author}} </p>
+            <p class="date">{{pin.date}}</p>
+            <p class="post-content">{{pin.content}} </p>
+            <div class="likes-comments">
+            <span class="likes">
+                <form action="{% url 'pins:like' %}" class="post-form" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="pinid" value="{{pin.id}}">
+                    <input type="hidden" name="like" value="1">
+                    <button class="like-btn like-color-btn" >
+                         <i class="fas fa-thumbs-up"></i>
+                    </button>
+                </form>
+
+                <!-- DETERMINE LIKE-BUTTON COLOR -->
+                    {% for key, value in has_liked.items %}
+                        {% if key == pin.id %}
+                        <p class="has_liked" style="display:none;">{{value}}</p>
+                        {% endif %}
+                    {% endfor %}
+
+                <span>
+                    {% for key,value in pinLikes.items %}
+                        {% if key == pin.id %}
+                            {{value}}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </span>
+            <span class="likes dislike-btn">
+                <form action="{% url 'pins:dislike' %}" class="post-form" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="pinid" value="{{pin.id}}">
+                    <input type="hidden" name="dislike" value="1">
+                    <button class="like-btn dislike-color-btn">
+                        <i class="fas fa-thumbs-down"></i>
+                    </button>
+                </form>
+                <!-- DETERMINE DISLIKE-BUTTON COLOR -->
+                {% for key,value in has_disliked.items %}
+                    {% if key == pin.id %}
+                        <p class="has_disliked" style="display:none;">{{value}}</p>
+                    {% endif %}
+                {% endfor %}
+
+                <span>
+                    {% for key,value in pinDislikes.items %}
+                        {% if key == pin.id%}
+                            {{value}}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </span>
+            <span class="comments">
+                    <button class="like-btn reveal-comments">
+                        <i class="fas fa-comment-dots"></i>
+                    </button>
+                <span>
+                    {% for key,value in postedPinComments.items %}
+                        {% if key == pin.id %}
+                            {{value}}
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- overlay for comments section -->
+    <div class="main-content-area-overlay" ></div>
+
+    <!-- Comments section -->
+    <div class="comments-section" style="z-index:2;">
+        <!--<button class="comments-close-btn">
+            <i class="fas fa-times comments-close-fa-times"></i>
+        </button>-->
+        <div class="post-commented " >
+            <div class="post comments-posts">
+                <div class="profile-img comment-profile-img">
+                    {% for profile in profileData %}
+                    {% if profile.username == pin.author %}
+                    <img class="post-profile-pic post-comment-profile-pic" src="{{profile.profilePic.url}}" alt="profile-pic">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="post-details">
+                   <div class="username-container"><span class="username">@{{pin.author}}</span><i class="fas fa-times comments-close-fa-times"></i></div>
+                    <p class="date">{{pin.date}}</p>
+                    <p class="post-content">{{pin.content}}</p>
+                    <div class="likes-comments">
+                    <span class="likes">
+
+                                <i class="fas fa-thumbs-up"></i>
+
+                        <span>
+                            {% for key,value in pinLikes.items %}
+                                {% if key == pin.id %}
+                                    {{value}}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </span>
+                    <span class="likes dislike-btn">
+
+                                <i class="fas fa-thumbs-down"></i>
+
+                        <span>
+                            {% for key,value in pinDislikes.items %}
+                                {% if key == pin.id %}
+                                    {{value}}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </span>
+                    <span class="comments">
+
+                                <i class="fas fa-comment-dots"></i>
+
+                        <span>
+                            {% for key,value in postedPinComments.items %}
+                                {% if key == pin.id %}
+                                    {{value}}
+                                {% endif %}
+                            {% endfor %}
+                        </span>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Create Comments Form -->
+        <form action="{% url 'pins:comment' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="pinid" value="{{pin.id}}">
+            {{commentForm.content}}
+            <input type="submit" class="comment-submit">
+        </form>
+        {% for comment in pinComment %}
+        {% if comment.pinid == pin.id %}
+        <div class="actual-comments">
+            <div class="profile-photo">
+                {% for profile in profileData%}
+                {% if comment.author == profile.username %}
+                <img class="comment-profile-pic" src="{{profile.profilePic.url}}" alt="profile-pic">
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="the-comment">
+                <p class="username username-comment">@{{comment.author}}</p>
+                <p class="date ">{{comment.date}}</p>
+                <p class="post-content post-comment">{{comment.content}}</p>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endfor %}
+    <!-- End of Comments Section-->
+
+
+
+
+    <!-- Make a Post Section-->
+    <div class="make-a-post" style="z-index: 2;">
+        <div class="make-a-post-prompt">
+            Post a new pin
+            <i class="fas fa-times make-a-post-close-fa-times"></i>
+        </div>
+        <form action="{% url 'pins:post' %}" method="POST">
+            {% csrf_token %}
+            {{pinform.content}}
+            <button type="submit" class="make-a-post-submitbutton">SUBMIT</button>
+        </form>
+    </div>
+
+
+    <script src="{% static 'pins_list.js' %}" ></script>
+</body>
+</html>

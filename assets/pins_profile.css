@@ -1,0 +1,478 @@
+/* -->> NAVBAR SECTION <<-- */
+.profile-nav{
+    width: 100%;
+    height: 10%;
+    color: #ffffff;
+    background-color: #1da1f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.profile-nav-logo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10%;
+    font-size: 40px;
+    background: rgba(235, 233, 239, 1.0);
+    background: -webkit-linear-gradient(top left, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    background: -moz-linear-gradient(top left, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    background: linear-gradient(to bottom right, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.profile-nav-logo a{
+  text-decoration: none;
+}
+.profile-nav-bar-links{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+}
+.profile-nav-bar-links a{
+    text-decoration: none;
+    color: rgba(255,255,255,1);
+}
+.profile-nav-fas{
+    padding: 0 30px;
+}
+.profile-nav-account-link{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+    height: fit-content;
+    width: fit-content;
+}
+.profile-nav-account-link-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.profile-nav-fas-fa-plus{
+    cursor: pointer;
+}
+/*
+.profile-nav-fas-fa-home{
+    padding: 0 60px;
+}
+.profile-nav-fas-fa-bell{
+    padding: 0 60px;
+}
+*/
+.profile-account-link-dropdown{
+    position: absolute;
+    background-color: #1da1f2/* rgb(6, 95, 150) */;
+    padding: 0;
+    right: 0;
+    height: fit-content;
+    width: max-content;
+    list-style-type: none;
+
+    /* display: none; */
+    transition: all 0.2s linear;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+.profile-account-link-dropdown li a{
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 0;
+    margin: 0 5px;
+}
+.profile-account-link-dropdown li a:hover{
+    text-decoration: underline;
+}
+
+
+
+/* Editable Profile */
+.editable-profile-container{
+    width: 70%;
+    height: fit-content;
+    margin: 10px auto;
+    /* background-color: rgb(250, 247, 250); */
+    /* background-color: #f5f8fa; */
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: relative;
+
+}
+.editable-profile{
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.editable-profile-pic{
+    height: 250px;
+    width: 250px;
+    margin: 10px 10px;
+    background-color: #eff5f8;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+.editable-profile-img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.editable-profile-details{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
+    text-align: center;
+}
+.editable-profile-username{
+    font-size: 40px;
+    color: #1da1f2;
+}
+.fa-map-marker-alt, .fa-calendar{
+    color: #1da1f2;
+}
+/* Account activity Details */
+.activity-details{
+    height: fit-content;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    place-items: center;
+}
+.activity-details span{
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    padding: 5% 0;
+}
+
+.change-profile-pic{
+    position: absolute;
+    bottom: 25%;
+    left: 35%;
+    font-size: 20px;
+    color: #1da1f2;
+    cursor: pointer;
+}
+.change-profile-details{
+    position: absolute;
+    bottom: 25%;
+    right: 10%;
+    font-size: 20px;
+    color: #1da1f2;
+    cursor: pointer;
+
+}
+
+
+/* Following and Suggestions Section */
+.following-container{
+    width:70%;
+    height: fit-content;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    /* background-color: rgb(250, 247, 250); */
+    /* background-color: #eff5f8;*/
+    /* background-color: #f5f8fa; */
+    background-color: #ffffff;
+    z-index: -1;
+}
+.following-section-title{
+    height: fit-content;
+    padding: 1%;
+    font-family: 'Noto Serif', serif;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+.following{
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    place-items: center;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+.following:hover{
+    background-color: rgba(245, 248, 250,0.1);
+}
+.following-profile-pic{
+    width: 40px;
+    height: 40px;
+    margin: 2% 0;
+}
+.following-profile-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.following-visit-form{
+    margin: 0;
+}
+.following-visit-btn{
+    align-self: center;
+    justify-self: center;
+    padding: 0;
+}
+.following-visit-button{
+    background: none;
+    border: 1px solid #1da1f2;
+    color: rgb(29, 161, 242);
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 0 20px;
+    outline-width: 0;
+    cursor: pointer;
+}
+.following-visit-button a{
+    text-decoration: none;
+    color: rgb(29, 161, 242);
+}
+.following-visit-button:hover{
+    border: 1px solid rgba(29, 161, 242,0.4);
+    background-color: rgba(29, 161, 242,0.6);
+}
+
+/* -->> HTML BODY OVERLAY FOR UPDATE PROFILE DETAILS<<-- */
+.profile-page-overlay{
+    transition: all 0.2s linear;
+}
+.open-profile-page-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* >> UPDATE PROFILE DETAILS <<*/
+.update-profile-details-container{
+    display: none;
+    height: fit-content;
+    width: 40%;
+    background-color: #ffffff;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    transition: all 0.5s linear;
+    z-index: 2;
+}
+.open-update-profile-details-container{
+    display: block;
+
+}
+.update-profile-details-biolabel, .update-profile-details-locationlabel, .update-profile-details-bio, .update-profile-details-location{
+    display: block;
+    width: 90%;
+    padding: 20px 0;
+    margin: 5% auto;
+}
+.update-profile-details-editDetailslabel{
+    width: 90%;
+    margin: 5% auto;
+    font-size: 20px;
+}
+.update-profile-details-container-fa-times-close{
+    float: right;
+    cursor: pointer;
+}
+.update-profile-details-bio{
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    outline-width: 0;
+    transition: all 0.2s linear;
+}
+.update-profile-details-bio:focus{
+    border-bottom: 1px solid #1da1f2;
+}
+.update-profile-details-location{
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    outline-width: 0;
+}
+.update-profile-details-location:focus{
+    border-bottom: 1px solid #1da1f2;
+}
+
+.update-profile-details-cancelSubmitButton-container{
+    width: 90%;
+    margin: 0 auto;
+    text-align: end;
+    margin-top: 10%;
+}
+.update-profile-details-resetbutton, .update-profile-details-submitbutton{
+    border: none;
+    background: none;
+    outline-width: 0;
+    cursor: pointer;
+    color: #1da1f2;
+    font-weight: bold;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1000px){
+    .editable-profile-container{
+        width: 70%;
+    }
+    .following-container{
+        width: 70%;
+    }
+    .activity-details span{
+        font-size: 25px;
+    }
+    /* >> UPDATE PROFILE DETAILS <<*/
+    .update-profile-details-container{
+        width: 50%;
+    }
+}
+@media screen and (max-width: 918px){
+  .editable-profile-pic{
+      height: 200px;
+      width: 200px;
+  }
+}
+@media screen and (max-width: 828px){
+  .editable-profile-pic{
+      height: 180px;
+      width: 180px;
+  }
+}
+@media screen and (max-width: 690px){
+    /* Navigation bar section */
+    .profile-nav-logo{
+        font-size: 30px;
+    }
+    .profile-nav-bar-links .profile-nav-fas-fa-plus{
+        display: none;
+    }
+
+
+    .editable-profile-container{
+        width: 80%;
+    }
+    .following-container{
+        width: 80%;
+    }
+    .activity-details span{
+        font-size: 20px;
+    }
+    .editable-profile-pic{
+        height: 160px;
+        width: 160px;
+    }
+
+    /* >> UPDATE PROFILE DETAILS <<*/
+    .update-profile-details-container{
+        width: 70%;
+    }
+
+    .editable-profile-username{
+        font-size: 28px;
+    }
+    .editable-profile-details {
+        font-size: 15px;
+    }
+    .change-profile-details{
+        font-size: 16px;
+    }
+}
+@media screen and (max-width: 584px){
+    .editable-profile-username{
+        font-size: 25px;
+    }
+    .editable-profile-details {
+        font-size: 13px;
+    }
+    .change-profile-details{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 468px){
+    /* Nav bar section*/
+    .profile-nav-logo{
+        margin: 0;
+        margin-left: 5%;
+        font-size: 20px;
+    }
+    .profile-nav-bar-links{
+        position: absolute;
+        left: 60%;
+        top: 50%;
+        transform: translate(-60%,-50%);
+        font-size: 18px;
+    }
+    .profile-nav-account-link{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-right: 2%;
+        height: 20px;
+        width: 20px;
+    }
+
+
+
+    .editable-profile-container{
+        width: 95%;
+    }
+    .editable-profile-pic{
+        width: 100px;
+        height: 100px;
+    }
+    .following-container{
+        width: 95%;
+
+    }
+    .activity-details span{
+        font-size: 12px;
+
+    }
+    .editable-profile-username{
+        font-size: 25px;
+    }
+    .editable-profile-details {
+        margin: 5px;
+        font-size: 13px;
+    }
+    .change-profile-pic{
+        left: 40%;
+        font-size: 13px;
+    }
+    .change-profile-details{
+        right: 0;
+        font-size: 13px;
+    }
+    .following{
+        font-size: 15px;
+    }
+    .following-section-title{
+        font-size: 20px;
+        letter-spacing: 0;
+    }
+    .following-profile-pic{
+        width: 30px;
+        height: 30px;
+    }
+
+    /* >> UPDATE PROFILE DETAILS << */
+    .update-profile-details-container{
+        width: 80%;
+    }
+}

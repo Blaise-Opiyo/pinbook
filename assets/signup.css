@@ -1,0 +1,120 @@
+.body{
+    padding: 0;
+    margin: 0;
+}
+/* -->> SIGNUP NAV BAR <<-- */
+.signup-nav-bar-links{
+    font-family: 'Mukta', sans-serif;
+    font-size: 17px;
+    margin: 0;
+}
+.signup-nav-bar-links a{
+  text-decoration: none;
+  color: #ffffff
+}
+.signup-nav-bar-links:nth-child(2){
+    margin: 0 10px;
+}
+
+.signup-form-container{
+    position: absolute;
+    width: 25%;
+    height: fit-content;
+    /* background-color: lightsalmon; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: auto;
+    text-align: center;
+    font-family: 'Mukta', sans-serif;
+}
+.signup-form-image-icon{
+    width: 50px;
+    height: 50px;
+}
+.signup-form{
+    margin: 0;
+}
+.signup-form input{
+  {
+      display: block;
+      margin: 1% auto;
+      width: 100%;
+      height: 45px;
+      padding-top: 20px;
+      font-size: 15px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+      outline-width: 0;
+  }
+
+}
+.signup-form-input{
+    display: block;
+    margin: 1% auto;
+    width: 100%;
+    height: 45px;
+    padding-top: 20px;
+    font-size: 15px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    outline-width: 0;
+}
+.signup-form-input:focus{
+    border-bottom: 2px solid #1da1f2;
+}
+.signup-form-submit{
+    display: block;
+    margin: 1% auto;
+    margin-top: 8%;
+    width: fit-content;
+    padding: 0 10px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 5px;
+    background-color: #1da1f2;
+    border: none;
+    outline-width: 0;
+    cursor: pointer;
+}
+
+.signup-form-signup-prompt{
+    font-size: 40px;
+    margin: 6%;
+}
+.signup-form-login-option-link{
+    font-size: 13px;
+}
+
+@media screen and (max-width: 990px){
+    .signup-form-container{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 690px){
+    .signup-form-container{
+        width: 50%;
+    }
+    .signup-nav-bar-links{
+        font-size: 15px;
+    }
+    .signup-nav-bar-links:first-child{
+        display: none;
+    }
+}
+@media screen and (max-width: 468px){
+    .signup-form-container{
+        width: 70%;
+    }
+    .signup-nav-bar-links{
+        font-size: 13px;
+    }
+     .signup-nav-bar-links:last-child{
+        display: none;
+    }
+    .signup-form-login-option-link{
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,75 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pins_list.css' %}">
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/72c0c071db.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style media="screen">
+    .errorlist{
+        list-style-type:none;
+        padding:0;
+        color:red;
+    }
+    @media screen and (max-width: 468px){
+      .errorlist{
+          font-size: 15px;
+      }
+    }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <span class="nav-logo">
+            <i class="fab fa-codiepie nav-logo-icon"></i>
+            pinbook
+        </span>
+        <div class="nav-bar-links">
+            <span class="signup-nav-bar-links"><a href="{% url 'accounts:signup'%}">SIGNUP</a></span>
+            <span class="signup-nav-bar-links">HOME</span>
+            <span class="signup-nav-bar-links"><a href="{% url 'accounts:login'%}">LOGIN</a></span>
+        <!-- <i class="fas nav-fas fa-plus nav-fas-fa-plus"></i> -->
+        <!-- <i class="fas nav-fas fa-home nav-fas-fa-home"></i> -->
+        <!-- <i class="fas nav-fas fa-bell nav-fas-fa-bell"></i> -->
+        </div>
+        <!--
+        <div class="nav-account-link">
+            <img src="default_profile_pic.png" class="nav-account-link-img" alt="profile pic">
+            <div >
+                <ul class="account-link-dropdown">
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Change Password</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    -->
+    </div>
+    <div class="signup-form-container">
+        <img src="{% static 'icons8_hermione_granger_doll.png' %}" class="signup-form-image-icon"alt="hermione_granger_doll">
+        <div class="signup-form-signup-prompt">Sign up</div>
+        <form class="signup-form" action="/accounts/signup/" method="post">
+          {% csrf_token %}
+          <!--
+            <input type="text" class="signup-form-input" placeholder="username">
+            <input type="password" class="signup-form-input" placeholder="password">
+            <input type="password" class="signup-form-input" placeholder="confirm password">
+-->
+            {{newuserForm.username}}
+            {{newuserForm.password1}}
+            {{newuserForm.password2}}
+            <!-- >> FORM ERRORS << -->
+            {{newuserForm.password1.errors}}
+            {{newuserForm.username.errors}}
+            {{newuserForm.password2.errors}}
+            <button type="submit" class="signup-form-submit">SIGN UP</button>
+
+        </form>
+        <div class="signup-form-login-option-link">Already have an account? Login <a href="{% url 'accounts:login' %}">here</a></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,559 @@
+
+/* Global Styles */
+body{
+   background-color: #eff5f8;
+   margin: 0;
+}
+
+/* Main styles */
+/* homepage container */
+
+/* MAIN CONTENT OVERLAY SECTION */
+.main-content-area-overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    transition: all 0.2s linear;
+    z-index: 2;
+}
+
+/* -->> NAVBAR SECTION <<-- */
+.nav{
+    width: 100%;
+    height: 10%;
+    color: #ffffff;
+    background-color: #1da1f2;
+    position: sticky;
+    top: 0;
+    overflow: auto;
+    z-index: 1;
+}
+.nav-logo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10%;
+    font-size: 40px;
+    background: rgba(235, 233, 239, 1.0);
+    background: -webkit-linear-gradient(top left, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    background: -moz-linear-gradient(top left, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    background: linear-gradient(to bottom right, rgba(235, 233, 239, 1.0), rgba(240, 143, 143, 1.0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-logo a{
+  text-decoration: none;
+}
+.nav-bar-links{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+}
+.nav .nav-bar-links a{
+  color: #ffffff;
+}
+.nav-fas{
+    padding: 0 30px;
+}
+.nav-fas-fa-plus{
+    cursor: pointer;
+}
+/*
+.nav-fas-fa-home{
+    padding: 0 60px;
+}
+.nav-fas-fa-bell{
+    padding: 0 60px;
+}
+*/
+.nav-account-link{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10%;
+    height: fit-content;
+    width: fit-content;
+
+}
+.logout-form{
+    margin: 0;
+}
+.logout-button{
+    border: none;
+    background: none;
+    color: #ffffff;
+    padding: 0;
+    cursor: pointer;
+}
+.logout-button:hover{
+    text-decoration: underline;
+}
+
+
+/* >> POST SECTION << */
+.post{
+    width: 45%;
+    /* height: calc(100% - 80%); */
+    height: fit-content;
+    margin: 10px 0;
+    margin-left: 12%;
+    /* background-color: rgb(250, 247, 250); */
+    background-color: #ffffff;
+    border-radius: 2.5%;
+    box-shadow: 1px 1px  8px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 100%;
+}
+.profile-img{
+    /* background-color: tomato; */
+    height: 80%;
+    align-self: center;
+    justify-self: center;
+}
+.post-profile-pic{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.post-details{
+   /* border: 2px solid blue; */
+    position: relative;
+
+}
+.username{
+    margin-top: calc(100% - 97%);
+    margin-bottom: 0;
+    margin-left: calc(100% - 97%);
+    margin-right: calc(100% - 97%);
+    color: #1da1f2;
+    font-size: 20px;
+}
+.date{
+    margin: 0;
+    margin-left: calc(100% - 97%);
+    margin-right: calc(100% - 97%);
+    margin-bottom: calc(100% - 98%);
+    color: #657786;
+    font-size: 13px;
+}
+.post-content{
+    margin: 0;
+    margin-left: calc(100% - 97%);
+    margin-right: calc(100% - 97%);
+    font-size: 15px;
+    color: #000000;
+}
+.likes-comments{
+    margin: 0;
+    margin-left: calc(100% - 97%);
+    margin-right: calc(100% - 97%);
+    font-size: 14px;
+    margin-left: 15px;
+    margin-bottom: calc(100% - 97%);
+}
+.post-form{
+    display: inline;
+}
+.like-btn{
+    border: none;
+    padding: 0;
+    background: none;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    outline-width: 0;
+    cursor: pointer;
+}
+.dislike-btn{
+    margin:0 17%;
+}
+
+/* -->> MAKE A POST SECTION <<-- */
+.make-a-post{
+    width: 30%;
+    height: fit-content;
+    background-color: #ffffff;
+    overflow: auto;
+    font-family: 'Open Sans', sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+    display: none;
+}
+.make-a-post-prompt{
+    margin: 5%;
+}
+.make-a-post-postinput{
+    display: block;
+    margin: 5%;
+    width: 90%;
+    height: 50px;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,0.4);
+    outline-width: 0;
+    color: rgba(0,0,0,0.8);
+}
+.make-a-post-postinput:focus{
+    border-bottom: 2px solid #1da1f2;
+}
+.make-a-post-submitbutton{
+    display: block;
+    margin:0 5%;
+    margin-bottom: 5%;
+    float: right;
+    border: none;
+    outline-width: 0;
+    background-color: #1da1f2;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.make-a-post-close-fa-times{
+    float: right;
+    color: rgba(0,0,0,0.7);
+    cursor: pointer;
+}
+
+/* >> >> >> START OF HOMEPAGE USER PROFILE << << << */
+.homepage-user-profile{
+    position: fixed;
+    z-index: ;
+    top: 11.5%;
+    right: 12%;
+    width: 300px;
+    height: fit-content;
+    background-color: #ffffff;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 1px 1px 5px rgb(0,0,0);
+}
+.homepage-user-profile-username a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #1da1f2;
+}
+.homepage-user-profile-pic{
+    margin: 5% auto;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: #eff5f8;
+}
+.homepage-user-profile-img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.homepage-user-profile-username, .homepage-user-profile-introtext, .homepage-user-profile-location{
+    margin: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.homepage-user-profile-username{
+    font-size: 30px;
+    color: #1da1f2;
+}
+.homepage-user-profile_fa-map-marker-alt{
+    font-size: 14px;
+    color: #1da1f2;
+    display: inline-block;
+    margin: 0 5px;
+}
+.visitaccount-or-logout{
+    height: fit-content;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-bottom: 5%;
+}
+.visitaccount-or-logout .logout-form{
+  justify-self: start;
+}
+.visitaccount-or-logout .logout-form .logout-button .visitaccount-or-logout-logout{
+    margin: 10px 20px;
+    color: #1da1f2;
+    font-size: 20px;
+}
+.visitaccount-or-logout a{
+  justify-self: end;
+  margin: 10px 20px;
+  text-decoration: none;
+}
+.visitaccount-or-logout-visitaccount{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+/* >> >> >> END OF HOMEPAGE USER PROFILE << << << */
+
+
+/* comments screen */
+.comments-section{
+    width: 40% ;
+    height: 90%;
+    background-color: #ffffff;
+    overflow: auto;
+    position: fixed;
+    margin: 0 auto;
+    left: 50%;
+    top: 7%;
+    transform: translateX(-50%) scale(0);
+    transition: all 0.2s linear;
+    box-shadow: 1px 1px 10px rgba(0,0,0,1);
+    border-radius: 5px;
+    color: #000000;
+}
+.open-comments-section{
+    transform: translateX(-50%) scale(1);
+}
+/*
+.comments-close-btn{
+    position: absolute;
+    top: 2%;
+    right: -2%;
+    border: none;
+    padding: 0;
+    background: none;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    outline-width: 0;
+}
+*/
+.comments-close-fa-times{
+ font-size: 20px;
+ color: rgba(0, 0, 0, 0.6);
+ cursor: pointer;
+ float: right;
+}
+.actual-comments{
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    gap: 1%;
+    width: 95%;
+    min-height: 13%;
+    margin: 3% auto;
+    margin-top: -2%;
+    overflow: auto;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.profile-photo{
+    height: 60px;
+    width:60px;
+    border-radius: 50%;
+    background-color: salmon;
+    align-self: center;
+    justify-self: center;
+}
+.comment-profile-pic{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+.post-comment-profile-pic{
+    border-radius: 50%;
+}
+.the-comment{
+    height: 100%;
+    width: 100%;
+}
+.comments-posts{
+    width: 95%;
+    margin: 0 auto;
+    overflow: auto;
+    box-shadow: none;
+    border-top: 1px solid rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.comment-profile-img{
+    width: 100px;
+    height: 100px;
+}
+.comment-profile-img{
+    border-radius: 50%;
+}
+.username-comment{
+    font-size: 19px;
+}
+.post-comment{
+    font-size: 14px;
+}
+.post-comment{
+    content: '';
+    display: block;
+    margin-bottom: 3%;
+}
+.comment-input{
+    width: 95%;
+    height: 10%;
+    display: block;
+    margin: 0 auto;
+    background-color: inherit;
+    border: none;
+    outline-width: 0;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+.comment-submit{
+    width: fit-content;
+    height: fit-content;
+    padding: 1% 2%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 10%;
+    border: none;
+    background-color: #33A2FF;
+    cursor: pointer;
+}
+/* MEDIA QUERIES */
+@media screen and (max-width: 990px){
+    /* post section */
+    .post{
+        width: calc(100% - 40%);
+        margin: 10px auto;
+    }
+    .homepage-user-profile{
+        display: none;
+    }
+
+    /* -->> MAKE A POST SECTION <<-- */
+    .make-a-post{
+        width: 40%;
+    }
+
+
+    /* comments section */
+    .comments-posts{
+        width: 90%;
+    }
+    .comments-section{
+        width: 55%;
+    }
+}
+@media screen and (max-width: 690px){
+    /* Navigation bar section */
+    .nav-logo{
+        font-size: 30px;
+    }
+    .nav-bar-links .nav-fas-fa-home{
+        display: none;
+    }
+
+    /* Post section */
+    .post{
+        width: calc(100% - 25%);
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        margin: 10px auto;
+    }
+    .profile-img{
+        height: 50%;
+        width: 100%;
+    }
+    .post-content{
+        font-size: 14px;
+    }
+    .dislike-btn{
+        margin: 15%;
+    }
+
+    /* -->> MAKE A POST SECTION <<-- */
+    .make-a-post{
+        width: 50%;
+    }
+
+    /* comments section */
+    .comments-section{
+        width: 75%;
+    }
+    .comments-posts{
+        width: 95%;
+    }
+    .actual-comments{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+    }
+    .profile-photo{
+        height: 70%;
+        width:100%;
+    }
+    .post-comment{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 468px){
+    /* Nav bar section*/
+    .nav-logo{
+        margin: 0;
+        margin-left: 5%;
+        font-size: 20px;
+    }
+    .nav-bar-links{
+        position: absolute;
+        left: 60%;
+        top: 50%;
+        transform: translate(-60%,-50%);
+        font-size: 18px;
+    }
+    .nav-account-link{
+        right: 2%;
+    }
+
+    /* Post section */
+    .post{
+        width: calc(100% - 10%);
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        margin: 10px auto;
+    }
+    .profile-img{
+        height: 30%;
+        width: 100%;
+    }
+    .post-content{
+        font-size: 13px;
+    }
+    .likes-comments{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .dislike-btn{
+        margin: 7%;
+    }
+
+    /* -->> MAKE A POST SECTION <<-- */
+    .make-a-post{
+        width: 80%;
+    }
+    .make-a-post-prompt{
+        font-size: 15px;
+    }
+    /* comments section */
+    .comments-section{
+        width: 95%;
+    }
+    .actual-comments{
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+    }
+    .profile-photo{
+        height: 60%;
+        width:100%;
+    }
+    .post-comment{
+        font-size: 12px;
+    }
+}

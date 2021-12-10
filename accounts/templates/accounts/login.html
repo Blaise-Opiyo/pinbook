@@ -1,0 +1,83 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'pins_list.css'%}">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/72c0c071db.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style media="screen">
+.errorlist{
+    list-style-type: none;
+    color: red;
+    padding: 0;
+    font-size: 15px;
+}
+@media screen and (max-width: 468px){
+    .errorlist{
+        font-size: 11px;
+    }
+}
+@media screen and (max-width: 690px){
+    .errorlist{
+        font-size: 13px;
+    }
+}
+@media screen and (max-width: 990px){
+    .errorlist{
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <span class="nav-logo">
+            <i class="fab fa-codiepie nav-logo-icon"></i>
+            pinbook
+        </span>
+        <div class="nav-bar-links">
+            <span class="login-nav-bar-links"><a href="{% url 'accounts:login'%}">LOGIN</a></span>
+            <span class="login-nav-bar-links">HOME</span>
+            <span class="login-nav-bar-links"><a href="{% url 'accounts:signup'%}">SIGNUP</a></span>
+        <!-- <i class="fas nav-fas fa-plus nav-fas-fa-plus"></i> -->
+        <!-- <i class="fas nav-fas fa-home nav-fas-fa-home"></i> -->
+        <!-- <i class="fas nav-fas fa-bell nav-fas-fa-bell"></i> -->
+        </div>
+        <!--
+        <div class="nav-account-link">
+            <img src="default_profile_pic.png" class="nav-account-link-img" alt="profile pic">
+            <div >
+                <ul class="account-link-dropdown">
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Change Password</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    -->
+    </div>
+    <div class="login-form-container">
+        <img src="{% static 'icons8_hermione_granger_doll.png' %}" class="login-form-image-icon"alt="hermione_granger_doll">
+        <div class="login-form-login-prompt">Log In</div>
+        <form class="login-form" action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+          <!--
+            <input type="text" class="login-form-input" placeholder="username">
+            <input type="password" class="login-form-input" placeholder="password">
+-->
+            {{authenticationForm.username}}
+            {{authenticationForm.password}}
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+            {% endif %}
+            <button type="submit" class="login-form-submit">LOG IN</button>
+            {{authenticationForm.non_field_errors}}
+        </form>
+        <div class="login-form-signup-option-link">Don't have an account? Sign up <a href="{% url 'accounts:signup' %}">here</a></div>
+    </div>
+</body>
+</html>
