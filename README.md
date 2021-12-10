@@ -1,0 +1,1 @@
+Pinbook is a social media app that allows you to write a pin and post, like, dislike and comment on others' pins, follow and visit their profiles. A pin is a short message that you can write and post, much like a tweet.
